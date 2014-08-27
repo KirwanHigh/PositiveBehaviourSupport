@@ -79,6 +79,7 @@
     <Content Include=".sencha\app\slice-impl.xml" />
     <Content Include=".sencha\app\watch-impl.xml" />
     <Content Include=".sencha\workspace\plugin.xml" />
+    <Content Include="app.css" />
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
     <Content Include="app\view\main\Main.js" />

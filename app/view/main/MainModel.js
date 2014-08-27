@@ -7,7 +7,7 @@ Ext.define('KirwanHighPBS.view.main.MainModel', {
     alias: 'viewmodel.main',
 
     data: {
-        name: 'KirwanHighPBS'
+        name: 'Classes'
     }
 
     //TODO - add data, formulas and/or methods to support your view

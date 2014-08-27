@@ -19,7 +19,16 @@ Ext.define('KirwanHighPBS.view.main.Main', {
         type: 'border'
     },
 
-    items: [{
+    items: [
+        {
+            region: 'north',
+            xtype: 'component',
+            cls: 'appBanner',
+            padding: 10,
+            height: 40,
+            html: 'Positive Behaviour Support'
+        },
+        {
         xtype: 'panel',
         bind: {
             title: '{name}'
@@ -28,6 +37,7 @@ Ext.define('KirwanHighPBS.view.main.Main', {
         html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
         width: 250,
         split: true,
+        collapsible: true,
         tbar: [{
             text: 'Button',
             handler: 'onClickButton'

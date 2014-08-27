@@ -49,6 +49,7 @@ Properties/AssemblyInfo.cs -text
 /Web.Debug.config -text
 /Web.Release.config -text
 /Web.config -text
+/app.css -text
 /app.js -text
 /app.json -text
 app/Application.js -text
