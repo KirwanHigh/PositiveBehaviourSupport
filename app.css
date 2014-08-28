@@ -1,3 +1,17 @@
 ﻿.appBanner{
     color:#ffffff;
 }
+.add-icon {
+     background: url('resources/icon_21727.png');
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+}
+.x-grid-center-icon{
+   display:block;
+   margin:0 auto;
+   text-align:center;
+}
+.x-action-col-cell img {
+  height: 32px;
+  width: 32px;
+}

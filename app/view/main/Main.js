@@ -8,8 +8,14 @@
 Ext.define('KirwanHighPBS.view.main.Main', {
     extend: 'Ext.container.Container',
 
+    requires: [
+    'Ext.toolbar.TextItem',
+    'Ext.view.View',
+    'Ext.ux.DataView.Animated'
+    ],
+
     xtype: 'app-main',
-    
+
     controller: 'main',
     viewModel: {
         type: 'main'
@@ -19,35 +25,73 @@ Ext.define('KirwanHighPBS.view.main.Main', {
         type: 'border'
     },
 
-    items: [
+    items: [{
+        region: 'north',
+        xtype: 'label',
+        text: 'Positive Behaviour Support - Merit system',
+        padding: 10,
+        height: 40
+    },
         {
-            region: 'north',
-            xtype: 'component',
-            cls: 'appBanner',
-            padding: 10,
-            height: 40,
-            html: 'Positive Behaviour Support'
+            region: 'west',
+            xtype: 'panel',
+            title: 'Classes',
+            width: 250,
+            split: true,
+            collapsible: true,
+            items: [{
+                xtype: 'gridpanel',
+                header: false,
+                hideHeaders: true,
+                columns: [
+                    { text: 'Class', dataIndex: 'ClassID', flex: 1 }
+                ],
+                store: 'Classes',
+                listeners: {
+                    cellclick: function (gridView, htmlElement, columnIndex, dataRecord) {
+                        var stuStore = Ext.getStore('Students');
+                        stuStore.getProxy().setExtraParam('id', dataRecord.data.ClassID);
+                        stuStore.load();
+                    }
+                }
+            }]
         },
         {
-        xtype: 'panel',
-        bind: {
-            title: '{name}'
-        },
-        region: 'west',
-        html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-        width: 250,
-        split: true,
-        collapsible: true,
-        tbar: [{
-            text: 'Button',
-            handler: 'onClickButton'
+            region: 'center',
+            xtype: 'gridpanel',
+            title: 'Students',
+            store: 'Students',
+            columns: [
+                    {
+                        text: 'Photo', dataIndex: 'PhotoPath', renderer: function (value) {
+                            return Ext.String.format(
+                                '<img src="{0}" width="60" height="71"/>',
+                                value
+                            );
+                        },
+                    },
+                    {
+                        text: 'Name', dataIndex: 'Preferred_Last_Name', renderer: function (value, p, model) {
+                            return Ext.String.format(
+                                '{0}, {1}',
+                                value,
+                                model.get('Preferred_First_Name')
+                            );
+                        }, flex: 1
+                    },
+                    {
+                        menuDisabled: true,
+                        sortable: false,
+                        xtype: 'actioncolumn',
+                        items: [{
+                            iconCls:'add-icon',
+                            tooltip: 'Add Merit',
+                            handler: function (grid, rowIndex, colIndex) {
+                                var rec = grid.getStore().getAt(rowIndex);
+                                Ext.Msg.alert('Add Merit', 'To ' + rec.get('EQID'));
+                            }
+                        }]
+                    }
+            ]
         }]
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Tab 1',
-            html: '<h2>Content appropriate for the current navigation.</h2>'
-        }]
-    }]
 });

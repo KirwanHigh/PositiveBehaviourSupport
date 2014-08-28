@@ -16,8 +16,8 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -82,6 +82,10 @@
     <Content Include="app.css" />
     <Content Include="app.js" />
     <Content Include="app\Application.js" />
+    <Content Include="app\model\SimpleClass.js" />
+    <Content Include="app\model\StudentSearchItem.js" />
+    <Content Include="app\store\ClassStore.js" />
+    <Content Include="app\store\StudentStore.js" />
     <Content Include="app\view\main\Main.js" />
     <Content Include="app\view\main\MainController.js" />
     <Content Include="app\view\main\MainModel.js" />
@@ -89,6 +93,8 @@
     <Content Include="bootstrap.js" />
     <Content Include="build.xml" />
     <Content Include="index.html" />
+    <Content Include="resources\icon_21727.png" />
+    <Content Include="resources\icon_21727.svg" />
     <Content Include="sass\example\bootstrap.css" />
     <Content Include="sass\example\custom.js" />
     <Content Include="sass\example\render.js" />
