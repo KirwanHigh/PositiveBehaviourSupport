@@ -28,7 +28,7 @@ Ext.define('KirwanHighPBS.view.main.Main', {
     items: [{
         region: 'north',
         xtype: 'label',
-        text: 'Positive Behaviour Support - Merit system',
+        text: 'Positive Behaviour Support Merit system',
         padding: 10,
         height: 40
     },
@@ -61,6 +61,53 @@ Ext.define('KirwanHighPBS.view.main.Main', {
             xtype: 'gridpanel',
             title: 'Students',
             store: 'Students',
+            tbar: [{
+                xtype: 'combo',
+                store: 'StudentSearch',
+                fieldLabel: 'Search',
+                minChars: 2,
+                typeAhead: false,
+                hideTrigger: true,
+                anchor: '100%',
+                flex: 1,
+                listeners: {
+                    select: function( combo, records, eOpts )
+                    {
+                        var stu = records[0].data;
+                        var message = 'Add merit to ' + stu.First_Name + ' ' + stu.Last_Name;
+
+                        Ext.MessageBox.confirm('PBS - Merit system', message, function (btn, text) {
+                            if (btn == 'yes') {
+                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
+                                Ext.Ajax.request({
+                                    url: path,
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    jsonData: {
+                                        EQID: stu.EQID,
+                                        Points: 1
+                                    },
+                                    success: function (response) {
+                                        var jsonResp = Ext.util.JSON.decode(response.responseText);
+                                        Ext.Msg.alert('PBS - Merit system', jsonResp.Message);
+                                    }
+                                });
+                            }
+                        }, this);
+                    }
+                },
+                listConfig: {
+                    loadingText: 'Searching...',
+                    emptyText: 'No matching students found.',
+
+                    itemSelector: '.search-item',
+
+                    // Custom rendering template for each item
+                    itemTpl: [
+                        '<div class=\"search-item\"><span><img height=\"71\" width=\"60\" src=\"{PhotoPath}\" alt=\"Student Photo\"/></span><h3><span>Home Group: {Roll_Class} (Yr{Year_Level})</br>Gender: {Gender}</span>{Preferred_Last_Name}, {Preferred_First_Name}</h3>Legal Name: {Last_Name}, {First_Name}</div>'
+                    ]
+                }
+            }],
             columns: [
                     {
                         text: 'Photo', dataIndex: 'PhotoPath', renderer: function (value) {
@@ -84,11 +131,25 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                         sortable: false,
                         xtype: 'actioncolumn',
                         items: [{
-                            iconCls:'add-icon',
+                            iconCls: 'add-icon',
                             tooltip: 'Add Merit',
                             handler: function (grid, rowIndex, colIndex) {
                                 var rec = grid.getStore().getAt(rowIndex);
-                                Ext.Msg.alert('Add Merit', 'To ' + rec.get('EQID'));
+
+                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
+                                Ext.Ajax.request({
+                                    url: path,
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    jsonData: {
+                                        EQID: rec.get('EQID'),
+                                        Points: 1
+                                    },
+                                    success: function (response) {
+                                        var jsonResp = Ext.util.JSON.decode(response.responseText);
+                                        Ext.Msg.alert('PBS - Merit system', jsonResp.Message);
+                                    }
+                                });
                             }
                         }]
                     }

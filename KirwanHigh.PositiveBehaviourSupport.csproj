@@ -85,6 +85,7 @@
     <Content Include="app\model\SimpleClass.js" />
     <Content Include="app\model\StudentSearchItem.js" />
     <Content Include="app\store\ClassStore.js" />
+    <Content Include="app\store\StudentSearchStore.js" />
     <Content Include="app\store\StudentStore.js" />
     <Content Include="app\view\main\Main.js" />
     <Content Include="app\view\main\MainController.js" />

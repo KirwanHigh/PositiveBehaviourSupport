@@ -9,9 +9,9 @@ Ext.define('KirwanHighPBS.Application', {
     name: 'KirwanHighPBS',
 
     stores: [
-        // TODO: add global / shared stores here
        'Classes',
-       'Students'
+       'Students',
+       'StudentSearch'
     ],
     
     launch: function () {
