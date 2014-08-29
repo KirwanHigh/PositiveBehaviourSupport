@@ -63,7 +63,6 @@ app/view/main/MainModel.js -text
 /bootstrap.js -text
 /bootstrap.json -text
 /build.xml -text
-build/temp/production/KirwanHighPBS/sencha-compiler/app/full-page-master-bundle.js -text
 ext/.sencha/package/Boot.js -text
 ext/.sencha/package/Microloader.js -text
 ext/.sencha/package/bootstrap-impl.xml -text
