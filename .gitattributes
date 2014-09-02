@@ -55,7 +55,12 @@ Properties/AssemblyInfo.cs -text
 app/Application.js -text
 app/Readme.md -text
 app/model/Readme.md -text
+app/model/SimpleClass.js -text
+app/model/StudentSearchItem.js -text
+app/store/ClassStore.js -text
 app/store/Readme.md -text
+app/store/StudentSearchStore.js -text
+app/store/StudentStore.js -text
 app/view/main/Main.js -text
 app/view/main/MainController.js -text
 app/view/main/MainModel.js -text
@@ -8636,6 +8641,8 @@ ext/src/window/Toast.js -text
 ext/src/window/Window.js -text
 /index.html -text
 resources/Readme.md -text
+resources/icon_21727.png -text
+resources/icon_21727.svg -text
 sass/Readme.md -text
 sass/config.rb -text
 sass/example/bootstrap.css -text

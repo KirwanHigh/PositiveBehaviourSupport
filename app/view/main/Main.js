@@ -75,9 +75,9 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                     {
                         var stu = records[0].data;
                         var message = 'Add merit to ' + stu.First_Name + ' ' + stu.Last_Name;
-
                         Ext.MessageBox.confirm('PBS - Merit system', message, function (btn, text) {
                             if (btn == 'yes') {
+                                load.show();
                                 var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
                                 Ext.Ajax.request({
                                     url: path,
@@ -134,8 +134,9 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                             iconCls: 'add-icon',
                             tooltip: 'Add Merit',
                             handler: function (grid, rowIndex, colIndex) {
+                                var load = new Ext.LoadMask(grid, { msg: 'Adding Merit...' });
+                                load.show();
                                 var rec = grid.getStore().getAt(rowIndex);
-
                                 var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
                                 Ext.Ajax.request({
                                     url: path,
@@ -150,6 +151,7 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                                         Ext.Msg.alert('PBS - Merit system', jsonResp.Message);
                                     }
                                 });
+                                load.destroy();
                             }
                         }]
                     }
