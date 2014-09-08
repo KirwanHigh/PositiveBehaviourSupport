@@ -78,7 +78,7 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                         Ext.MessageBox.confirm('PBS - Merit system', message, function (btn, text) {
                             if (btn == 'yes') {
                                 load.show();
-                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
+                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchool/api/Student/AddMerit';
                                 Ext.Ajax.request({
                                     url: path,
                                     method: 'POST',
@@ -137,7 +137,7 @@ Ext.define('KirwanHighPBS.view.main.Main', {
                                 var load = new Ext.LoadMask(grid, { msg: 'Adding Merit...' });
                                 load.show();
                                 var rec = grid.getStore().getAt(rowIndex);
-                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/AddMerit';
+                                var path = 'https://eqnoq2146006.noq.eq.edu.au/InSchool/api/Student/AddMerit';
                                 Ext.Ajax.request({
                                     url: path,
                                     method: 'POST',

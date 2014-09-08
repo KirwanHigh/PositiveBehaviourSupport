@@ -5,7 +5,7 @@
     proxy: {
         type: 'ajax',
         limitParam: null,
-        url: 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Timetable/GetTeacherClasses',
+        url: 'https://eqnoq2146006.noq.eq.edu.au/InSchool/api/Timetable/GetTeacherClasses',
         reader: {
             type: 'json'
         }

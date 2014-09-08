@@ -5,7 +5,7 @@
     proxy: {
         type: 'ajax',
         limitParam: null,
-        url: 'https://eqnoq2146006.noq.eq.edu.au/InSchoolUAT/api/Student/Search',
+        url: 'https://eqnoq2146006.noq.eq.edu.au/InSchool/api/Student/Search',
         reader: {
             type: 'json'
         }
